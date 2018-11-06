@@ -18,9 +18,7 @@ class App extends Component {
   }
 
 
-
-
-
+  
   addPlayer() {
     // create a new item with unique id
     const newItem = {
@@ -38,22 +36,6 @@ class App extends Component {
     });
   }
 
-  addResult() {
-    // create a new item with unique id
-    const addResult = {
-      id: 1 + Math.random(),
-      value: this.state.addResult.slice()
-    };
-    // copy current list of items
-    const list = [...this.state.list];
-    // add the new item to the list
-    list.push(addResult);
-    // update state with new list, reset the new item input
-    this.setState({
-      list,
-      addResult: ""
-    });
-  }
 
 
 
