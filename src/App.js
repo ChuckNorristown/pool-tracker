@@ -8,37 +8,26 @@ class App extends Component {
     super(props);
     this.state = {
       newItem: "",
-      addResult: "",
       list: []
     };
   }
+
   updateInput(key, value) {
-    // update react state
     this.setState({ [key]: value });
   }
 
-
-  
   addPlayer() {
-    // create a new item with unique id
     const newItem = {
       id: 1 + Math.random(),
       value: this.state.newItem.slice()
     };
-    // copy current list of items
     const list = [...this.state.list];
-    // add the new item to the list
     list.push(newItem);
-    // update state with new list, reset the new item input
     this.setState({
       list,
       newItem: ""
     });
   }
-
-
-
-
 
   deleteItem(id) {
     // copy current list of items
@@ -48,6 +37,19 @@ class App extends Component {
 
     this.setState({ list: updatedList });
   }
+
+  ChangeWins = e => {
+    this.setState({
+      value: e.value
+    });
+  };
+
+  ChangeLosses = e => {
+    this.setState({
+      value: e.value !== null ? e.value + 1 : null
+    });
+  };
+
   render() {
     return (
       <div>
@@ -85,6 +87,26 @@ class App extends Component {
                 return (
                   <li key={item.id}>
                     {item.value}
+                    <label>
+                    <br />
+                      <input
+                        placeholder="please enter value"
+                        value={this.state.value}
+                        onChange={this.ChangeWins}
+                      />{" "}
+                      wins
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        placeholder="please enter value"
+                        value={
+                          this.state.value == null ? null : this.state.value - 1
+                        }
+                        onChange={this.ChangeLosses}
+                      />{" "}
+                      losses
+                    </label>
                     <br />
                     <button onClick={() => this.deleteItem(item.id)}>
                       Delete
