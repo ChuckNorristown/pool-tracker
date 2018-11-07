@@ -72,7 +72,7 @@ class App extends Component {
                   <li key={item.id}>
                     {item.value}
                     <label>
-                    <br />
+                      <br />
                       <input
                         type="number"
                         min="0"
