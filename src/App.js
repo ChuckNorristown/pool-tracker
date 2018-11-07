@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newItem: "",
+      newPlayer: "",
       list: []
     };
   }
@@ -17,38 +17,23 @@ class App extends Component {
   }
 
   addPlayer() {
-    const newItem = {
+    const newPlayer = {
       id: 1 + Math.random(),
-      value: this.state.newItem.slice()
+      value: this.state.newPlayer.slice()
     };
     const list = [...this.state.list];
-    list.push(newItem);
+    list.push(newPlayer);
     this.setState({
       list,
-      newItem: ""
+      newPlayer: ""
     });
   }
 
   deleteItem(id) {
-    // copy current list of items
     const list = [...this.state.list];
-    // filter out the item being deleted
     const updatedList = list.filter(item => item.id !== id);
-
     this.setState({ list: updatedList });
   }
-
-  ChangeWins = e => {
-    this.setState({
-      value: e.value
-    });
-  };
-
-  ChangeLosses = e => {
-    this.setState({
-      value: e.value !== null ? e.value + 1 : null
-    });
-  };
 
   render() {
     return (
@@ -65,12 +50,12 @@ class App extends Component {
           <input
             type="text"
             placeholder="Enter Player"
-            value={this.state.newItem}
-            onChange={e => this.updateInput("newItem", e.target.value)}
+            value={this.state.newPlayer}
+            onChange={e => this.updateInput("newPlayer", e.target.value)}
           />
           <button
             onClick={() => this.addPlayer()}
-            disabled={!this.state.newItem.length}
+            disabled={!this.state.newPlayer.length}
           >
             &#43; Add
           </button>
@@ -90,20 +75,18 @@ class App extends Component {
                     <label>
                     <br />
                       <input
+                        type="number"
+                        min="0"
                         placeholder="please enter value"
-                        value={this.state.value}
-                        onChange={this.ChangeWins}
                       />{" "}
                       wins
                     </label>
                     <br />
                     <label>
                       <input
+                        type="number"
+                        min="0"
                         placeholder="please enter value"
-                        value={
-                          this.state.value == null ? null : this.state.value - 1
-                        }
-                        onChange={this.ChangeLosses}
                       />{" "}
                       losses
                     </label>
