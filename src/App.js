@@ -39,7 +39,7 @@ class App extends Component {
       <div>
         <SimpleStorage parent={this} />
         <form>
-          <label>
+          <label className="player-name">
             <input type="text" required value={this.state.newPlayer} onChange={e => this.updateInput("newPlayer", e.target.value)} />
             <div className="label-text">Enter Player</div>
           </label>
@@ -47,10 +47,10 @@ class App extends Component {
             Submit
           </button>
         </form>
-        <ul>
+        <ul className="player-container">
           {this.state.list.map(item => {
             return (
-              <li key={item.id}>
+              <li className="players" key={item.id}>
                 {item.value}
                 <label>
                   <input type="number" min="0" />
@@ -60,7 +60,7 @@ class App extends Component {
                   <input type="number" min="0" />
                   <div className="label-text">losses</div>
                 </label>
-                <button onClick={() => this.deleteItem(item.id)}>
+                <button className="delete-button" onClick={() => this.deleteItem(item.id)}>
                   Delete
                 </button>
               </li>
