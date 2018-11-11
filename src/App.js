@@ -40,10 +40,18 @@ class App extends Component {
         <SimpleStorage parent={this} />
         <form>
           <label className="player-name">
-            <input type="text" required value={this.state.newPlayer} onChange={e => this.updateInput("newPlayer", e.target.value)} />
-            <div className="label-text">Enter Player</div>
+            <input
+              type="text"
+              required
+              value={this.state.newPlayer}
+              onChange={e => this.updateInput("newPlayer", e.target.value)}
+            />
+            <div className="label-text">Add Player</div>
           </label>
-          <button onClick={() => this.addPlayer()} disabled={!this.state.newPlayer.length} >
+          <button
+            onClick={() => this.addPlayer()}
+            disabled={!this.state.newPlayer.length}
+          >
             Submit
           </button>
         </form>
@@ -51,16 +59,19 @@ class App extends Component {
           {this.state.list.map(item => {
             return (
               <li className="players" key={item.id}>
-                {item.value}
-                <label>
+                <div className="card">{item.value}</div>
+                <label className="wins-label">
                   <input type="number" min="0" />
                   <div className="label-text">wins</div>
                 </label>
                 <label>
                   <input type="number" min="0" />
-                  <div className="label-text">losses</div>
+                  <div className="label-text loss">losses</div>
                 </label>
-                <button className="delete-button" onClick={() => this.deleteItem(item.id)}>
+                <button
+                  className="delete-button"
+                  onClick={() => this.deleteItem(item.id)}
+                >
                   Delete
                 </button>
               </li>

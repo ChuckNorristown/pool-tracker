@@ -19,7 +19,6 @@ label .label-text {
   color: #9B9B9B;
   cursor: text;
   font-size: 20px;
-  line-height: 20px;
   text-transform: uppercase;
   transform: translateY(-34px);
   transition: all 0.3s;
@@ -28,7 +27,7 @@ label .label-text {
 label input {
   background-color: transparent;
   border: 0;
-  border-bottom: 2px solid #4A4A4A;
+  border-bottom: 1px solid #4A4A4A;
   color: white;
   font-size: 36px;
   letter-spacing: -1px;
@@ -44,20 +43,24 @@ label input {
   width: 350px;
 }
 
-label input:focus + .label-text {
+label input:focus+.label-text {
   color: #F0F0F0;
   font-size: 13px;
   transform: translateY(-74px);
 }
 
-label input:valid + .label-text {
+label input:valid+.label-text {
   font-size: 13px;
   transform: translateY(-74px);
 }
 
+.wins-label {
+  padding-top: 35px;
+}
+
 button {
   background-color: #333333;
-  border: 2px solid white;
+  border: 1px solid white;
   border-radius: 27px;
   color: white;
   cursor: pointer;
@@ -67,7 +70,8 @@ button {
   transition: all 200ms;
 }
 
-button:hover, button:focus {
+button:hover,
+button:focus {
   background-color: white;
   color: #333333;
 }
@@ -76,11 +80,13 @@ button:hover, button:focus {
   text-align: center;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 60px;
 }
 
 .delete-button {
   font-size: 10px;
   padding: 10px 20px;
+  margin-bottom: 20px;
 }
 
 li {
@@ -88,4 +94,13 @@ li {
   list-style: none;
   color: aqua;
   font-size: 25px;
+  background-color: #333333;
+  border: 1px solid white;
+  border-radius: 27px;
+}
+
+.card {
+  border: 0;
+  border-bottom: 1px solid #4A4A4A;
+  padding: 20px;
 }
